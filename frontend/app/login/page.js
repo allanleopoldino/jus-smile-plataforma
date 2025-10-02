@@ -27,10 +27,8 @@ export default function LoginPage() {
             const data = await response.json();
 
             if (response.ok) {
-                // Login bem-sucedido
-                alert('Login realizado com sucesso!');
-                localStorage.setItem('token', data.token); // Salva o token no navegador
-                router.push('/dashboard'); // Redireciona para a página de dashboard
+                localStorage.setItem('token', data.token);
+                router.push('/dashboard');
             } else {
                 // Erro de login vindo da API (ex: senha errada)
                 setError(data.error || 'Ocorreu um erro no login.');

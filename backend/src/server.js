@@ -1,4 +1,3 @@
-// Importação dos módulos necessários
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -6,12 +5,12 @@ const db = require('./services/db');
 const authMiddleware = require('./middleware/auth');
 const cors = require('cors');
 
-// Carrega as variáveis de ambiente do arquivo .env
+// variáveis de ambiente .env
 require('dotenv').config();
 
 // Inicialização do aplicativo Express
 const app = express();
-const port = process.env.PORT; // Porta em que o servidor irá rodar 
+const port = process.env.PORT;
 
 // Middleware para permitir que o Express entenda JSON no corpo das requisições
 app.use(express.json());
@@ -60,7 +59,7 @@ app.post('/login', async (req, res) => {
         const result = await db.query(userQuery, [email]);
 
         if (result.rows.length === 0) {
-            return res.status(401).json({ error: 'Credenciais inválidas.' }); // Usuário não encontrado
+            return res.status(401).json({ error: 'Credenciais inválidas.' });
         }
 
         const user = result.rows[0];
@@ -69,7 +68,7 @@ app.post('/login', async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, user.password_hash);
 
         if (!isPasswordValid) {
-            return res.status(401).json({ error: 'Credenciais inválidas.' }); // Senha incorreta
+            return res.status(401).json({ error: 'Credenciais inválidas.' });
         }
 
         // 3. Se a senha for válida, gera o token JWT
@@ -90,10 +89,9 @@ app.post('/login', async (req, res) => {
 
 app.get('/profile', authMiddleware, async (req, res) => {
     try {
-        // Graças ao middleware, agora temos acesso a 'req.user'
+        // middleware
         const userId = req.user.userId;
 
-        // Podemos usar o ID do usuário para buscar informações no banco de dados
         const userQuery = 'SELECT id, name, email, plan FROM users WHERE id = $1';
         const result = await db.query(userQuery, [userId]);
 
