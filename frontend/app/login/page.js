@@ -28,7 +28,7 @@ export default function LoginPage() {
 
             if (response.ok) {
                 localStorage.setItem('token', data.token);
-                router.push('/dashboard');
+                router.push('/contratos/novo');
             } else {
                 // Erro de login vindo da API (ex: senha errada)
                 setError(data.error || 'Ocorreu um erro no login.');

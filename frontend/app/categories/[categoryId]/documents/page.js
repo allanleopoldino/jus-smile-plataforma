@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function DocumentListPage() {
   const router = useRouter();
   const params = useParams();
-  const categoryId = params.categoryId;
+  const specialtyId = params.specialtyId;
 
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,11 +20,11 @@ export default function DocumentListPage() {
     }
 
     const fetchDocuments = async () => {
-      if (!categoryId) return;
+      if (!specialtyId) return;
 
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${apiUrl}/categories/${categoryId}/documents`, {
+        const response = await fetch(`${apiUrl}/specialties/${specialtyId}/procedures`, {
           headers: { 'Authorization': `Bearer ${token}` },
         });
 
@@ -43,7 +43,7 @@ export default function DocumentListPage() {
     };
 
     fetchDocuments();
-  }, [categoryId, router]);
+  }, [specialtyId, router]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center"><p>Carregando documentos...</p></div>;

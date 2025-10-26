@@ -26,3 +26,7 @@ Thumbs.db
 
 # Arquivos de editores de código
 .vscode/
+
+# Arquivos de Log
+logs/
+*.log
