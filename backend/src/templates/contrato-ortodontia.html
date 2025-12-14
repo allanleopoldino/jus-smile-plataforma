@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; margin: 40px; }
+        h1 { font-size: 14pt; text-align: center; text-transform: uppercase; margin-bottom: 30px; }
+        p { text-align: justify; margin-bottom: 15px; }
+        .campo { font-weight: bold; }
+        .assinaturas { margin-top: 50px; display: flex; justify-content: space-between; }
+        .linha { border-top: 1px solid #000; width: 45%; text-align: center; padding-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Contrato de Prestação de Serviços Ortodônticos</h1>
+    
+    <p>
+        Pelo presente instrumento particular, de um lado a clínica <strong>Jus Smile</strong>, 
+        doravante denominada CONTRATADA, e de outro lado o paciente 
+        <span class="campo">{{NOME_PACIENTE}}</span>, inscrito no CPF sob o nº 
+        <span class="campo">{{CPF_PACIENTE}}</span>, doravante denominado CONTRATANTE.
+    </p>
+
+    <h3>1. Do Objeto</h3>
+    <p>
+        O presente contrato tem por objeto a prestação de serviços odontológicos de ortodontia, 
+        conforme plano de tratamento aprovado previamente.
+    </p>
+
+    <h3>2. Queixa Principal</h3>
+    <p>
+        {{QUEIXA_PRINCIPAL}}
+    </p>
+
+    <h3>3. Plano Financeiro</h3>
+    <p>
+        {{PLANO_FINANCEIRO}}
+    </p>
+
+    <div class="assinaturas">
+        <div class="linha">Assinatura da Clínica</div>
+        <div class="linha">Assinatura do Paciente</div>
+    </div>
+</body>
+</html>

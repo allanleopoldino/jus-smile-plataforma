@@ -1,5 +1,6 @@
 import './globals.css';
 import { ErrorProvider } from '@/context/ErrorContext';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata = {
   title: 'Jus Smile',
@@ -10,9 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <body>
-        {/* 2. Envolva os 'children' com o ErrorProvider */}
         <ErrorProvider>
           {children}
+          {/* componente Toaster aqui */}
+          <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
         </ErrorProvider>
       </body>
     </html>
